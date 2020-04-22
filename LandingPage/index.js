@@ -17,6 +17,9 @@ app.get("/app-slack-oauth", (req, res) => {
     .post("https://slack.com/api/oauth.v2.access", body, { headers })
     .then(resp => {
       res.send(resp.data);
+    })
+    .catch(err => {
+      console.log(`ERROR: ${JSON.stringify(err.response.data)}`);
     });
 });
 
