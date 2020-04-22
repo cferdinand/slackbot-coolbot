@@ -8,8 +8,11 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "/dist/index.html"));
 });
 
-app.all("/app-slack-oauth", (req, res) => {
-  console.log(req);
+app.get("/app-slack-oauth", (req, res) => {
+  console.log(req.query);
+  console.log(req.query.code);
+  const code = req.query.code;
+  res.send(code);
 });
 
 const port = process.env.PORT || 4000;
