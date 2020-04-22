@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const axios = require("axios");
 
 app.use(express.static("dist"));
 
@@ -12,6 +13,7 @@ app.get("/app-slack-oauth", (req, res) => {
   console.log(req.query);
   console.log(req.query.code);
   const code = req.query.code;
+  //   axios.post("https://slack.com/api/oauth.v2.access",)
   res.send(code);
 });
 
