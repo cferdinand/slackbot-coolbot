@@ -10,11 +10,14 @@ app.get("/", (req, res) => {
 });
 
 app.get("/app-slack-oauth", (req, res) => {
-  console.log(req.query);
-  console.log(req.query.code);
-  const code = req.query.code;
-  //   axios.post("https://slack.com/api/oauth.v2.access",)
-  res.send(code);
+  const body = `code=${req.query.code}&client_id=${process.env.CLIENTID}&client_secret=${process.env.CLIENTSECRET}`;
+  const headers = { "Content-Type": "application/x-www-form-urlencoded" };
+
+  axios
+    .post("https://slack.com/api/oauth.v2.access", body, { headers })
+    .then(resp => {
+      res.send(resp.data);
+    });
 });
 
 const port = process.env.PORT || 4000;
