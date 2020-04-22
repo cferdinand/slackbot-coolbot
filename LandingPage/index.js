@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/app-slack-oauth", (req, res) => {
-  const body = `code=${req.query.code}&client_id=${process.env.CLIENTID}&client_secret=${process.env.CLIENTSECRET}`;
+  const body = `code=${req.query.code}&client_id=${process.env.CLIENTID}&client_secret=${process.env.CLIENTSECRET}&redirect_uri=https://slackbot-coolbot.herokuapp.com/app-slack-oauth`;
   const headers = { "Content-Type": "application/x-www-form-urlencoded" };
 
   axios
